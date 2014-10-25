@@ -173,9 +173,14 @@
     <Compile Include="Migrations\201410251624097_Linking_asp_user_to_employee_profile.Designer.cs">
       <DependentUpon>201410251624097_Linking_asp_user_to_employee_profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.cs" />
+    <Compile Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.Designer.cs">
+      <DependentUpon>201410251727153_adding_search_text_column_to_employee_profile.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\EmployeeProfile.cs" />
+    <Compile Include="Models\EmployeeViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -261,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410251624097_Linking_asp_user_to_employee_profile.resx">
       <DependentUpon>201410251624097_Linking_asp_user_to_employee_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.resx">
+      <DependentUpon>201410251727153_adding_search_text_column_to_employee_profile.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

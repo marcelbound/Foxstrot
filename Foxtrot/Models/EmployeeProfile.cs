@@ -28,12 +28,28 @@ namespace Foxtrot.Models
         public string Title { get; set; }
         [MaxLength(25)]
         public string Location { get; set; }
+        [MaxLength(150)]
+        public string SearchText { get; set; }
 
         public ApplicationUser User { get; set; }
 
         public EmployeeProfile()
         {
             Id = Guid.NewGuid();
+        }
+
+        public void UpdateSearchText()
+        {
+            this.SearchText = string.Format("{0} {1} {2}", FirstName, LastName, Email).Trim();
+        }
+
+        [NotMapped]
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
         }
     }
 }
