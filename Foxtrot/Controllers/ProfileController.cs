@@ -15,9 +15,11 @@ namespace Foxtrot.Controllers
         {
             this.db = ApplicationDbContext.Create();
         }
-        public ActionResult Details()
+        public ActionResult Details(Guid id)
         {
-            throw new NotImplementedException();   // return a razor with a view model that shows the details of the user
+            var profile = db.Profiles.SingleOrDefault(p => p.Id == id);
+
+            return View(profile);
         }
 
         public ActionResult Search(string filter)

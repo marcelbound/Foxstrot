@@ -40,7 +40,7 @@
                         var items = [];
                         for (var i = 0; i < data.length; i++) {
                             var result = data[i];
-                            items.push({ id: result.Email, text: result.FullName + ' (' + result.Email + ')' });
+                            items.push({ id: result.Id, text: result.FullName + ' (' + result.Email + ')' });
                         }
 
                         return { results: items };
