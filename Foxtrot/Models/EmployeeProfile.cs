@@ -13,6 +13,7 @@ namespace Foxtrot.Models
     }
     public class EmployeeProfile
     {
+        public Guid ProfileId { get; set; }
         public EmployeeClass Class { get; set; }
 
         [MaxLength(50)]

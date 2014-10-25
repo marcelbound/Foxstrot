@@ -3,9 +3,71 @@
 }
 
 <div class="jumbotron">
-    <p class="lead" style="text-align:center">auto complete search box goes here</p>
+    <div style="text-align:center">
+        <h2>Search by name or email</h2>
+        <input type="text" placeholder="Search" id="select2-name" style="width:400px;" />
+    </div>
 </div>
 
-<div class="row">
+<div class="profile-area">
 
 </div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/select2")
+
+
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+
+
+
+            //Profile Search
+            $("#select2-name").select2({
+                minimumInputLength: 3,
+                ajax: {
+                    url: "/Profile/Search",
+                    dataType: "json",
+                    quietMillis: 100,
+                    data: function (term, page) {
+                        return {
+                            filter: term
+                        };
+                    },
+                    results: function (data, page) {
+                        var items = [];
+                        for (var i = 0; i < data.Result.length; i++) {
+                            var result = data.Result[i];
+                            items.push({ id: result.Email, text: result.FirstName + ' ' + result.LastName + ' (' + result.Email + ')' });
+                        }
+
+                        return { results: items };
+                    }
+                }
+            });
+
+            $('#select2-name').on("change", function (e) {
+                var $targetSection = $(".profile-area");
+
+                $.ajax({
+                    dataType: "html",
+                    contentType: "application/json",
+                    type: "GET",
+                    url: "/Profile/Details/" + e.val,
+                    timeout: 10000,
+                    success: function (html) {
+
+                        if ($.trim(html) === "")
+                            $targetSection.html('<div>No employees found.</div>');
+                        else
+                            $targetSection.html(html);
+                    }
+                });
+            });
+
+
+      });
+    </script>
+}
