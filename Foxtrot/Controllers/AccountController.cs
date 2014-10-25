@@ -154,7 +154,17 @@ namespace Foxtrot.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Profile = new EmployeeProfile()
+                                {
+                                    Email = model.Email,
+                                    Class = EmployeeClass.Management
+                                }
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
