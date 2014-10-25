@@ -27,11 +27,11 @@ namespace Foxtrot.Controllers
                           .Select(p => new EmployeeViewModel
                                            {
                                                Id = p.Id,
-                                               FullName = p.FullName,
+                                               FullName = p.FirstName + " " + p.LastName,
                                                Email = p.Email
                                            });
 
-            return Json(users);
+            return Json(users, JsonRequestBehavior.AllowGet);
         }
     }
 }

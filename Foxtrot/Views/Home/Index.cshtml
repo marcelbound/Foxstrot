@@ -38,9 +38,9 @@
                     },
                     results: function (data, page) {
                         var items = [];
-                        for (var i = 0; i < data.Result.length; i++) {
-                            var result = data.Result[i];
-                            items.push({ id: result.Email, text: result.FirstName + ' ' + result.LastName + ' (' + result.Email + ')' });
+                        for (var i = 0; i < data.length; i++) {
+                            var result = data[i];
+                            items.push({ id: result.Email, text: result.FullName + ' (' + result.Email + ')' });
                         }
 
                         return { results: items };
