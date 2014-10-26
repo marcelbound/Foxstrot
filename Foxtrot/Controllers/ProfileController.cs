@@ -22,6 +22,14 @@ namespace Foxtrot.Controllers
             return View(profile);
         }
 
+        public ActionResult Edit(Guid id)
+        {
+            //var profile = db.Profiles.SingleOrDefault(p => p.Id == id);
+
+            throw new NotImplementedException();
+
+        }
+
         public ActionResult Search(string filter)
         {
             var users = db.Profiles
