@@ -1,4 +1,4 @@
-﻿@model Foxtrot.Models.EmployeeProfile
+﻿@model Foxtrot.Models.EmployeeViewModel
 
 @{
     ViewBag.Title = "Details";
@@ -58,7 +58,6 @@
         </dd>
     </dl>
 
-
     <div class="modal fade" id="editProfile">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -67,14 +66,15 @@
                     <h4 class="modal-title">Edit Employee Profile</h4>
                 </div>
                 <div class="modal-body">
-                    <form id="editProfileForm" method="POST">
+                    <form id="edit-profile-form" action="@Url.Action("Edit", "Profile")" method="post">
+                        <input type="hidden" name="Id" value="@Model.Id" />
                         <dl class="dl-horizontal">
                             <dt>
                                 @Html.DisplayNameFor(model => model.Class)
                             </dt>
 
                             <dd>
-                                @Html.DropDownListFor(model => model.Class, new SelectList(Enum.GetValues(typeof(Foxtrot.Models.EmployeeClass))))
+                                @Html.DropDownListFor(model => model.Class, new SelectList(Enum.GetValues(typeof(Foxtrot.Core.EmployeeClass))))
                             </dd>
 
                             <dt>
@@ -121,7 +121,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
+                    <button type="button" class="btn btn-primary" id="save-employee-changes">Save changes</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -131,3 +131,21 @@
 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#editProfile">
     Edit
 </button>
+
+<button class="btn btn-primary btn-lg back-home" data-toggle="modal">
+    Back to Home
+</button>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(document).ready(function (e) {
+            $("#save-employee-changes").click(function (e) {
+                $("#edit-profile-form").submit();
+            });
+
+            $(".back-home").click(function (e) {
+                window.location = '/';
+            });
+        });
+    </script>
+}

@@ -1,4 +1,5 @@
-﻿using Foxtrot.Models;
+﻿using Foxtrot.Core;
+using Foxtrot.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,16 +18,42 @@ namespace Foxtrot.Controllers
         }
         public ActionResult Details(Guid id)
         {
-            var profile = db.Profiles.SingleOrDefault(p => p.Id == id);
+            var profile = db.Profiles
+                                .SingleOrDefault(p => p.Id == id);
 
-            return View(profile);
+            var viewData = new EmployeeViewModel
+                                {
+                                    Id = profile.Id,
+                                    Class = profile.Class,
+                                    Email = profile.Email,
+                                    FirstName = profile.FirstName,
+                                    LastName = profile.LastName,
+                                    Location = profile.Location,
+                                    Title = profile.Title
+                                };
+
+            return View(viewData);
         }
 
-        public ActionResult Edit(Guid id)
+        [HttpPost]
+        public ActionResult Edit(EmployeeViewModel model)
         {
-            //var profile = db.Profiles.SingleOrDefault(p => p.Id == id);
+            var profile = db.Profiles.SingleOrDefault(p => p.Id == model.Id);
 
-            throw new NotImplementedException();
+            db.Profiles.Attach(profile);
+
+            profile.FirstName = model.FirstName;
+            profile.LastName = model.LastName;
+            profile.Location = model.Location;
+            profile.Title = model.Title;
+            profile.Class = model.Class;
+            profile.Email = model.Email;
+
+            db.Entry<EmployeeProfile>(profile).State = System.Data.Entity.EntityState.Modified;
+
+            db.SaveChanges();
+
+            return RedirectToAction("details", new { id = model.Id });
 
         }
 
@@ -34,7 +61,7 @@ namespace Foxtrot.Controllers
         {
             var users = db.Profiles
                           .Where(p => p.FirstName.Contains(filter))
-                          .Select(p => new EmployeeViewModel
+                          .Select(p => new EmployeeSelectViewModel
                                            {
                                                Id = p.Id,
                                                FullName = p.FirstName + " " + p.LastName,
