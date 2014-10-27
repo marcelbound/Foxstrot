@@ -1,51 +1,52 @@
 ﻿@model Foxtrot.Models.EmployeeViewModel
 
-<dl class="dl-horizontal">
-    <dt>
-        @Html.DisplayNameFor(model => model.Class)
-    </dt>
+<div class="form-horizontal">
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Class, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EnumDropDownListFor(model => model.Class, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Class, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-    <dd>
-        @Html.DropDownListFor(model => model.Class, new SelectList(Enum.GetValues(typeof(Foxtrot.Core.EmployeeClass))))
-    </dd>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.FirstName)
-    </dt>
+    <div class="form-group">
+        @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-    <dd>
-        @Html.TextBoxFor(model => model.FirstName)
-    </dd>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-    <dt>
-        @Html.DisplayNameFor(model => model.LastName)
-    </dt>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+        </div>
+    </div>
 
-    <dd>
-        @Html.TextBoxFor(model => model.LastName)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Email)
-    </dt>
-
-    <dd>
-        @Html.TextBoxFor(model => model.Email)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Title)
-    </dt>
-
-    <dd>
-        @Html.TextBoxFor(model => model.Title)
-    </dd>
-
-    <dt>
-        @Html.DisplayNameFor(model => model.Location)
-    </dt>
-
-    <dd>
-        @Html.TextBoxFor(model => model.Location)
-    </dd>
-</dl>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Location, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Location, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Location, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>

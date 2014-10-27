@@ -43,6 +43,10 @@
                 }
             });
         });
+
+        $('#save-employee').click(function (e) {
+            $("#add-employee-form").submit();
+        });
     });
 </script>
 }
@@ -63,3 +67,5 @@
 
 <div class="profile-area">
 </div>
+
+@Html.Partial("AddEmployee")

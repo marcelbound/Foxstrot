@@ -6,10 +6,6 @@
 
 @section Scripts{
     <script type="text/javascript">
-        $('#add-employee').click(function (e) {
-            $("#add-employee-form").submit();
-        });
-
         $("#save-employee-changes").click(function (e) {
             $("#edit-employee-form").submit();
         });
@@ -71,6 +67,5 @@
 <button class="btn btn-primary btn-lg back-home" data-toggle="modal">
     Home
 </button>
-
 
 @Html.Partial("EditEmployee")
