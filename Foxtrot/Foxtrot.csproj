@@ -177,6 +177,10 @@
     <Compile Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.Designer.cs">
       <DependentUpon>201410251727153_adding_search_text_column_to_employee_profile.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.cs" />
+    <Compile Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.Designer.cs">
+      <DependentUpon>201410270647008_adding_indices_to_firstname_and_last_name.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Core\EmployeeProfile.cs" />
@@ -257,6 +261,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.resx">
       <DependentUpon>201410251727153_adding_search_text_column_to_employee_profile.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.resx">
+      <DependentUpon>201410270647008_adding_indices_to_firstname_and_last_name.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
