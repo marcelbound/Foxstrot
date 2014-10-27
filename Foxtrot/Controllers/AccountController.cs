@@ -102,8 +102,7 @@ namespace Foxtrot.Controllers
         // POST: /Account/Register
         [HttpPost]
         [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(EmployeeViewModel model)
         {
             if (ModelState.IsValid)
             {
@@ -113,10 +112,17 @@ namespace Foxtrot.Controllers
                     Email = model.Email,
                     Profile = new EmployeeProfile()
                                 {
+                                    FirstName = model.FirstName,
+                                    LastName = model.LastName,
+                                    Title = model.Title,
+                                    Location = model.Location,
                                     Email = model.Email,
-                                    Class = EmployeeClass.Management
+                                    Class = EmployeeClass.Management,
+
                                 }
                 };
+
+                user.Profile.UpdateSearchText();
 
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -128,7 +134,6 @@ namespace Foxtrot.Controllers
                 AddErrors(result);
             }
 
-            // If we got this far, something failed, redisplay form
             return View(model);
         }
 

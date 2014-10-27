@@ -35,6 +35,9 @@ namespace Foxtrot
                       "~/Content/select2.css",
                       "~/Content/select2-bootstrap.css"));
 
+            bundles.Add(new ScriptBundle("~/bundles/employees").Include(
+            "~/Scripts/employees.js"));
+
             // Set EnableOptimizations to false for debugging. For more information,
             // visit http://go.microsoft.com/fwlink/?LinkId=301862
             BundleTable.EnableOptimizations = true;
