@@ -16,7 +16,7 @@ namespace Foxtrot.Controllers
         {
             this.db = ApplicationDbContext.Create();
         }
-        public ActionResult Details(Guid id)
+        public ActionResult Details(Guid id, bool viewerIsManager = false)
         {
             var profile = db.Profiles
                                 .SingleOrDefault(p => p.Id == id);
@@ -31,6 +31,9 @@ namespace Foxtrot.Controllers
                                     Location = profile.Location,
                                     Title = profile.Title
                                 };
+
+
+            ViewData["ViewerIsManager"] = (profile.Class == Core.EmployeeClass.Management);
 
             return View(viewData);
         }

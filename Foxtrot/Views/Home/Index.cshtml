@@ -61,14 +61,11 @@
 
     <br />
 
-    @if (bool.Parse(ViewData["IsManager"].ToString()))
-    { 
-        <div style="text-align:center">
-            <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-employee">
-                Add Employee
-            </button>
-        </div>
-    }
+    <div style="text-align:center">
+        <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#add-employee">
+            Add Employee
+        </button>
+    </div>
 </div>
 
 <div class="profile-area">

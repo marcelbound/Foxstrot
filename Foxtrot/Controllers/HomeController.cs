@@ -18,13 +18,17 @@ namespace Foxtrot.Controllers
 
         public ActionResult Index()
         {
+            
             if (Request.IsAuthenticated)
             {
                 var user = db.Profiles.SingleOrDefault(u => u.Email == HttpContext.User.Identity.Name);
                 
-                ViewData["IsManager"] = user.Class == Core.EmployeeClass.Management;
+                ViewData["ViewerIsManager"] = (user.Class == Core.EmployeeClass.Management);
 
-                return View();
+                if (user.Class == Core.EmployeeClass.Management)
+                    return View();
+                else
+                    return RedirectToAction("Details", "Profile", new { id = user.Id });
             }
 
             return RedirectToAction("Login", "Account");
