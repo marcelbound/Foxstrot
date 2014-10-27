@@ -60,7 +60,7 @@ namespace Foxtrot.Controllers
         public ActionResult Search(string filter)
         {
             var users = db.Profiles
-                          .Where(p => p.FirstName.Contains(filter))
+                          .Where(p => p.FirstName.Contains(filter) || p.LastName.Contains(filter))
                           .Select(p => new EmployeeSelectViewModel
                                            {
                                                Id = p.Id,
