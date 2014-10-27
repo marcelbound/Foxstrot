@@ -40,6 +40,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MiniProfiler">
+      <HintPath>..\packages\MiniProfiler.3.0.10\lib\net40\MiniProfiler.dll</HintPath>
+    </Reference>
+    <Reference Include="MiniProfiler.EntityFramework6">
+      <HintPath>..\packages\MiniProfiler.EF6.3.0.11\lib\net40\MiniProfiler.EntityFramework6.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -177,7 +183,9 @@
     <Compile Include="Migrations\201410251727153_adding_search_text_column_to_employee_profile.Designer.cs">
       <DependentUpon>201410251727153_adding_search_text_column_to_employee_profile.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.cs" />
+    <Compile Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Migrations\201410270647008_adding_indices_to_firstname_and_last_name.Designer.cs">
       <DependentUpon>201410270647008_adding_indices_to_firstname_and_last_name.cs</DependentUpon>
     </Compile>

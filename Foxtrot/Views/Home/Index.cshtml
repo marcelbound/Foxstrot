@@ -1,4 +1,6 @@
-﻿@section Scripts{
+﻿@using StackExchange.Profiling
+
+@section Scripts{
 <script type="text/javascript">
     $(document).ready(function (e) {
         //Profile Search
@@ -51,6 +53,7 @@
 </script>
 }
 
+@MiniProfiler.RenderIncludes()
 <div class="jumbotron">
     <div style="text-align:center">
         <input type="text" placeholder="Search by name" id="select2-name" style="width:400px;" />
